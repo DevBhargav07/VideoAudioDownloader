@@ -1,4 +1,4 @@
-from flask import Flask, request, send_file, jsonify, after_this_request
+from flask import Flask, request, send_file, jsonify, after_this_request, render_template
 from pytubefix import YouTube
 from pytubefix.cli import on_progress
 import os, io, logging
@@ -150,6 +150,9 @@ def check_captions() -> any:
         print(f'Got an error: {e}')
         return jsonify({'message': f'Error: {str(e)}'}), 500
 
+@app.route('/')
+def download_page() -> any:
+    return render_template('index.html')
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5555, debug=True)
