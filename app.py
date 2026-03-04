@@ -1,7 +1,7 @@
 from flask import Flask, request, send_file, jsonify, after_this_request, render_template
 from pytubefix import YouTube
 from pytubefix.cli import on_progress
-import os, io, logging, subprocess
+import os, io, logging
 
 logging.basicConfig(
     filename='application.log',
@@ -28,21 +28,14 @@ def download_video() -> any:
         return jsonify({'message': 'URL is required'}), 400
     
     try:
-        yt = YouTube(url)
-        video = yt.streams.filter(adaptive=True, file_extension="mp4", only_video=True).order_by("resolution").desc().first()
-
-        # video = yt.streams.get_highest_resolution()
+        yt = YouTube(url, on_progress_callback=on_progress)
+        video = yt.streams.get_highest_resolution()
         if not video:
             return jsonify({'success': False, 'message': 'No video stream available for this URL'}), 404        
         file_path = video.download(output_path=VIDEO_DIR)
 
         with open(file_path, mode='rb') as f:
             data = io.BytesIO(f.read())
-        ## Download separately
-        video_file = "video_temp.mp4"
-        audio_file = "audio_temp.mp4"
-        output_file = "final_video.mp4"
-        
         @after_this_request
         def remove_file(response):
             try:
@@ -50,10 +43,8 @@ def download_video() -> any:
             except Exception as error:
                 app.logger.error(f'Got an error {error}')
             return response
-        ffmpeg_command = ["ffmpeg", "-y", "-i", video_file, "-i", audio_file, "-c", "copy", output_file]
-        subprocess.run(ffmpeg_command, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
         return send_file(
-            output_file,
+            data,
             as_attachment=True,
             download_name=f'{yt.title}.mp4',
             mimetype="video/mp4"
