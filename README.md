@@ -22,11 +22,11 @@ If a version number appears, Python is installed successfully.
 
 Clone the repository to your local machine:
 
-git clone https://github.com/DevBhargav07/YoutubeVideoDownloader.git
+git clone https://github.com/DevBhargav07/VideoAudioDownloader.git
 
 Move into the project directory:
 
-cd YoutubeVideoDownloader
+cd VideoAudioDownloader
 
   ---------------------------------
   3. Create a Virtual Environment
