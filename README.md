@@ -1,58 +1,149 @@
-#Downloading youtube video using flask + python
+Download Video using Flask + Python
 
-First Install Python in your system
+This project allows users to download  videos or audio using a
+Flask web application. It uses the pytubefix package to handle
+downloading.
 
-After installing the Python, check the version using the command
+  -------------------
+  1. Install Python
+  -------------------
 
-python --version
+Install Python 3.8 or later.
 
-If no error occurs then python installed successfully and
+Check if Python is installed:
 
-Create a virtual environment using the below command
+python –version or python3 –version
 
-python -m venv env (use your preferred name)
+If a version number appears, Python is installed successfully.
 
-Upon creating the venv, activate
+  ----------------------
+  2. Clone the Project
+  ----------------------
 
-For macos, linux
+Clone the repository to your local machine:
+
+git clone https://github.com/YOUR_USERNAME/YoutubeVideoDownloader.git
+
+Move into the project directory:
+
+cd YoutubeVideoDownloader
+
+  ---------------------------------
+  3. Create a Virtual Environment
+  ---------------------------------
+
+A virtual environment keeps project dependencies isolated.
+
+  ---------------
+  Windows Setup
+  ---------------
+
+Create virtual environment:
+
+python -m venv env
+
+Activate virtual environment:
+
+.env
+
+If activated successfully you will see:
+
+(env) C:>
+
+  ----------------------
+  Ubuntu / macOS Setup
+  ----------------------
+
+Create virtual environment:
+
+python3 -m venv env
+
+Activate virtual environment:
 
 source env/bin/activate
 
-For windows
+After activation you will see:
 
-.\env\Scripts\Activate
+(env) user@system:project$
 
-after that clone our project
+  ---------------------------------
+  4. Install Project Dependencies
+  ---------------------------------
 
-then change your directory to the project directory simply perform the below command
+Install required packages:
 
-pip install -r requirements or pip install -r requirements.txt
+pip install -r requirements.txt
 
-The above command will try to install all the requirements of the project which are needed for this project
+This installs all dependencies needed for the project.
 
-Then run the project using command 
+  ------------------------
+  5. Run the Application
+  ------------------------
+
+Start the Flask application:
 
 python app.py
 
-which will run the project at http://127.0.0.1:5555
+or on Linux/macOS:
 
-So, The information of code and using is explained below.
+python3 app.py
 
-Using the Package called as pytubefix
--> Using os module base_directory to link the project file path using code or dynamically
--> Using the In-built concept in pytubefix to download the file inside of the respected_directory
--> Using the Flash In-built code to download the file to the user device
-Written for both Video and Audio
+  -------------------------
+  6. Open the Application
+  -------------------------
 
-Video:-
--> A input box to take the url for downloading either a video or audio  
+Open your browser and go to:
 
-#Captions are a bit of tricky to handle that
-i got in a loop that i have to add that to the file or just give another input to
-take that yt_video and download it seperately.
-will look and try to find a seperate way.
+http://127.0.0.1:5555
 
-In my Learning Way of Flask, This is my project
-As using flask with python is a good project which uses a youtube url to download 
-either an audio or video with a meaningful notifications for the user understanding
-purpose.
+You will see the Downloader interface.
+
+  ------------------
+  Project Features
+  ------------------
+
+• Download videos • Download audio • Simple URL input
+interface • User-friendly download notifications
+
+  -------------------
+  Technologies Used
+  -------------------
+
+Flask Used to create the web application and handle routes.
+
+pytubefix Handles downloading of video and audio streams.
+
+os module Used to dynamically determine the base directory and manage
+file paths.
+
+Flash messages (Flask) Used to display notifications to users.
+
+  ---------------
+  Download Flow
+  ---------------
+
+1.  User enters an URL
+2.  Flask processes the request
+3.  pytubefix extracts video/audio streams
+4.  Selected stream is downloaded to the configured directory
+5.  File is delivered to the user
+
+  ---------------------
+  Note about Captions
+  ---------------------
+
+Handling captions from can be tricky. Currently captions are not
+fully implemented.
+
+Possible future approaches: • Download captions separately • Provide a
+second input for captions • Use the transcript API
+
+  -----------------
+  Project Purpose
+  -----------------
+
+This project was built while learning Flask with Python.
+
+It demonstrates: • Flask routing • Handling user input • File
+downloading • Integrating external libraries • Providing meaningful
+notifications to users
