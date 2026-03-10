@@ -147,3 +147,5 @@ This project was built while learning Flask with Python.
 It demonstrates: • Flask routing • Handling user input • File
 downloading • Integrating external libraries • Providing meaningful
 notifications to users
+
+WARNING: DOWNLOADING COPYRIGHTED MATERIAL IS HIGHLY ILLEGAL! I DO NOT TAKE ANY RESPONSIBILITY FOR YOUR USAGE OF THIS TOOL! THIS IS FOR EDUCATIONAL PURPOSES ONLY!
