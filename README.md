@@ -142,7 +142,7 @@ second input for captions • Use the transcript API
   Project Purpose
   -----------------
 
-This project was built while learning Flask with Python.
+This project is done as learning carrier with Flash using Python programming language.
 
 It demonstrates: • Flask routing • Handling user input • File
 downloading • Integrating external libraries • Providing meaningful
